@@ -26,9 +26,13 @@ const Elephant = struct {
 
     // Your Elephant trunk methods go here!
     // ---------------------------------------------------
+    pub fn hasTrunk(self: *Elephant) bool {
+        return (self.trunk != null);
+    }
 
-    ???
-
+    pub fn getTrunk(self: *Elephant) *Elephant {
+        return self.trunk.?;
+    }
     // ---------------------------------------------------
 
     pub fn visit(self: *Elephant) void {
@@ -72,9 +76,7 @@ fn visitElephants(first_elephant: *Elephant) void {
         // This gets the next elephant or stops.
         if (e.hasTail()) {
             e = e.getTail();
-        } else {
-            break;
-        }
+        } else break;
     }
 
     // We follow the trunks!
@@ -84,8 +86,6 @@ fn visitElephants(first_elephant: *Elephant) void {
         // This gets the previous elephant or stops.
         if (e.hasTrunk()) {
             e = e.getTrunk();
-        } else {
-            break;
-        }
+        } else break;
     }
 }
